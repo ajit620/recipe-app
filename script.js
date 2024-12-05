@@ -6,7 +6,7 @@ const mealTypeFilter = document.getElementById("meal-type");
 const sortByFilter = document.getElementById("sort-by");
 
 // Spoonacular API key
-const API_KEY = 'fd15c73b92984b229029313ecc6b7279';  // Replace with your Spoonacular API key
+const API_KEY = 'a8b3cbc92c3d45b6b1963986e389e756';  // Replace with your Spoonacular API key
 const API_URL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=`;
 
 // Function to search recipes
