@@ -6,7 +6,7 @@ const mealTypeFilter = document.getElementById("meal-type");
 const sortByFilter = document.getElementById("sort-by");
 
 // Spoonacular API key
-const API_KEY = 'b00233ffb7334c04a7aaf077f1dc9ad1';  // Replace with your Spoonacular API key
+const API_KEY = 'fd15c73b92984b229029313ecc6b7279';  // Replace with your Spoonacular API key
 const API_URL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=`;
 
 // Function to search recipes
@@ -29,6 +29,9 @@ async function fetchRecipes(ingredients, mealType, sortBy) {
     try {
         const response = await fetch(url);
         const data = await response.json();
+
+        // Log the response to check the data structure
+        console.log(data);
 
         // Hide loading indicator after fetching data
         loadingIndicator.style.display = 'none';
@@ -61,10 +64,19 @@ function displayRecipes(recipes) {
             <div class="content">
                 ${recipeTitle}
                 ${recipeIngredients}
-                <button onclick="window.open('https://spoonacular.com/recipes/${recipe.id}', '_blank')">View Recipe</button>
+                <button onclick="viewRecipe('${recipe.id}')">View Recipe</button>
             </div>
         `;
         
         recipesContainer.appendChild(recipeCard);
     });
+}
+
+// Function to view recipe details
+function viewRecipe(recipeId) {
+    if (recipeId) {
+        window.open(`https://spoonacular.com/recipes/${recipeId}`, '_blank');
+    } else {
+        alert('Recipe details are unavailable at the moment.');
+    }
 }
